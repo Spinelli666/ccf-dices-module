@@ -1,0 +1,20 @@
+{
+  "name": "ccf-dices-module",
+  "version": "6.2.9-ccf.1",
+  "private": true,
+  "description": "Dice So Nice! 3D dice as a module for ccf-web's virtual tabletop",
+  "license": "AGPL-3.0-only",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs"
+  },
+  "dependencies": {
+    "cannon-es": "https://codeload.github.com/JiDW/cannon-es/tar.gz/0b473dd5fc9203fdedb7b8524d1666c60f2669f8",
+    "stats-gl": "3.8.0",
+    "three": "0.184.0",
+    "webworker-promise": "0.5.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
+}

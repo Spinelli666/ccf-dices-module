@@ -1,0 +1,11 @@
+{
+  "id": "dice-so-nice",
+  "title": "Dice So Nice!",
+  "description": "Dados 3D do módulo Dice So Nice!, do Foundry VTT: física, modelos, texturas e sons do próprio módulo.",
+  "version": "6.2.9-ccf.1",
+  "authors": "JDW e Simone (Dice So Nice!); adaptação para o ccf-web",
+  "license": "AGPL-3.0",
+  "source": "https://github.com/Spinelli666/ccf-dices-module",
+  "api": 1,
+  "entry": "index.js"
+}
