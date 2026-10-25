@@ -1,4 +1,5 @@
-// Modified by ccf-web (2026-10-12) from Dice So Nice 6.2.9 (AGPL-3.0): asset URLs made absolute (/modules/dice-so-nice/...).
+// Modified by ccf-web (2026-10-12) from Dice So Nice 6.2.9 (AGPL-3.0): asset URLs made absolute (/modules/dice-so-nice/...);
+// (2026-10-25) high-DPI rendering capped at 1.5x the CSS pixels (MAX_PIXEL_RATIO).
 import {
 	ACESFilmicToneMapping,
 	Timer,
@@ -37,6 +38,9 @@ import { HDRLoader } from 'three/examples/jsm/loaders/HDRLoader.js';
 import { LEGACY_TO_METERS } from './SceneConstants.js';
 
 //shared rendering foundation: scene, renderer, camera, lighting, shadow plane, display
+// ccf-web: the most the dice canvas renders per CSS pixel (see the high-DPI setPixelRatio).
+const MAX_PIXEL_RATIO = 1.5;
+
 export class DiceScene {
 
 	constructor(container, diceFactory, config) {
@@ -111,8 +115,9 @@ export class DiceScene {
 					preserveDrawingBuffer: preserveDrawingBuffer,
 					logarithmicDepthBuffer: true
 				});
+				// ccf-web: capped, so a 4K / 200% screen doesn't render the full-window scene at 4x the pixels.
 				if (this.dicefactory.useHighDPI)
-					this.renderer.setPixelRatio(window.devicePixelRatio);
+					this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, MAX_PIXEL_RATIO));
 				if (this.dicefactory.realisticLighting) {
 					this.renderer.toneMapping = ACESFilmicToneMapping;
 					this.renderer.toneMappingExposure = this.toneMappingExposureDefault;

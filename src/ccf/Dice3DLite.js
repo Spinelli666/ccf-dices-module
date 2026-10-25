@@ -14,8 +14,11 @@ import { DiceLibrary } from "../engine/DiceLibrary.js";
 import { CustomDiceTerms } from "../engine/CustomDiceTerms.js";
 import { TextureLoader } from "three";
 
-// Dice So Nice's DEFAULT_OPTIONS with Foundry's "high" performance quality — except the dice leave
-// sooner (players found the 2s wait + 1s fade too long next to the sheet).
+// Dice So Nice's DEFAULT_OPTIONS at a "medium" quality — the "high" one stuttered here, since the dice
+// draw over ccf-web's own board instead of sharing Foundry's canvas: 2048 shadows instead of 4096,
+// no bloom (it drew the scene twice per frame plus blur passes), SMAA instead of 4x MSAA, plain glass
+// and the screen's density capped at 1.5x (DiceScene.js). The dice also leave sooner (players found
+// the 2s wait + 1s fade too long next to the sheet).
 const DEFAULT_OPTIONS = {
 	enabled: true,
 	visibility: "all",
@@ -27,8 +30,8 @@ const DEFAULT_OPTIONS = {
 	autoscale: true,
 	scale: 75,
 	speed: 1,
-	imageQuality: "high",
-	shadowQuality: "high",
+	imageQuality: "medium",
+	shadowQuality: "medium",
 	bumpMapping: true,
 	sounds: true,
 	soundsSurface: "felt",
@@ -36,10 +39,10 @@ const DEFAULT_OPTIONS = {
 	canvasZIndex: "over",
 	throwingForce: "medium",
 	useHighDPI: true,
-	antialiasing: "msaa",
-	glow: true,
+	antialiasing: "smaa",
+	glow: false,
 	persistentDiceOutlines: true,
-	advancedGlass: true,
+	advancedGlass: false,
 	ambiance: "foyer_1k",
 	showOthersSFX: true,
 	immersiveDarkness: true,
